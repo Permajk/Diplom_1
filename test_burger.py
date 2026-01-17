@@ -15,7 +15,7 @@ class TestBurger:
         assert burger.ingredients == [mock_sauce]
 
     # Проверка удаления ингредиента(начинки) из бургера с параметризацией
-    @pytest.mark.parametrize("ingredient", ["sauce", "filling"])
+    @pytest.mark.parametrize("ingredient", ["INGREDIENT_TYPE_SAUCE", "INGREDIENT_TYPE_FILLING"])
     def test_remove_ingredient_in_burger(self, burger, ingredient):
         burger.add_ingredient(ingredient)
         burger.remove_ingredient(0)
@@ -24,7 +24,7 @@ class TestBurger:
     # Проверка перемещения ингредиентов в бургере
     def test_move_ingredient_in_burger(self, mock_sauce, mock_filling, burger):
         burger.add_ingredient(mock_sauce)
-        burger.add_ingredient(mock_filling)    
+        burger.add_ingredient(mock_filling)
         burger.move_ingredient(0, 1)
         assert burger.ingredients[0] == mock_filling
 
